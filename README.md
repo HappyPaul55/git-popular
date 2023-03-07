@@ -1,4 +1,4 @@
-# Git Popular
+# `git-popular`
 
 A command-line tool that generates git commits in your repo to make it (and you?) look popular and regularily coding.
 
