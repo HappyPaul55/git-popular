@@ -15,10 +15,6 @@ struct Args {
     #[arg(short, long)]
     end: NaiveDate,
 
-    /// Extra arguments to pass to git.
-    #[arg(short, long)]
-    git: Option<String>,
-
     /// Working directory, must have existing git repo setup.
     #[arg(short, long)]
     dir: String,
@@ -75,7 +71,6 @@ fn main() {
         args.sunday,
     ];
 
-    let git_args: String = args.git.unwrap_or_default();
     let dir: String = args.dir;
     while current_date <= args.end {
         let days_from_monday: usize = current_date.weekday().number_from_monday() as usize;
@@ -107,7 +102,6 @@ fn main() {
                     format!("{:0>2}", (commits_to_make / 60) % 60),
                     format!("{:0>2}", commits_to_make % 60)
                 ))
-                .raw_arg(&git_args)
                 .output()
                 .expect("Failed to execute git command");
 
