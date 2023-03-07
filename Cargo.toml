@@ -1,0 +1,9 @@
+[package]
+name = "git-popular"
+version = "1.0.0"
+edition = "2021"
+
+[dependencies]
+clap = { version = "4.1.8", features = ["derive"] }
+chrono = "0.4.19"
+rand = "0.8.5"
