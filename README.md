@@ -8,7 +8,7 @@ A command-line tool that generates git commits in your repo to make it (and you?
 2. Create your git repo where you want to generate commits. `git init`.
 3. Download the app, it's command line based.
 4. Give it a run then push the results.
-5. Profit
+5. _Profit...?_
 
 ### Example:
    ```bash
