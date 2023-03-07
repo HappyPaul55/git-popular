@@ -1,7 +1,7 @@
-use chrono::{NaiveDate, Datelike};
+use chrono::{Datelike, NaiveDate};
 use clap::Parser;
 use rand::Rng;
-use std::{process, os::windows::process::CommandExt};
+use std::process;
 
 /// A simple way to make a repo look populated.
 #[derive(Parser, Debug)]
@@ -87,12 +87,16 @@ fn main() {
                 format!("{:0>2}", (commits_made / 60) % 60),
                 format!("{:0>2}", commits_made % 60)
             );
-            
+
             let output = process::Command::new("git")
                 .current_dir(&dir)
                 .arg("commit")
                 .arg("-m")
-                .arg(format!("Comment #{:?} on {:?}", commits_made + 1, current_date))
+                .arg(format!(
+                    "Comment #{:?} on {:?}",
+                    commits_made + 1,
+                    current_date
+                ))
                 .arg("--allow-empty")
                 .arg("--date")
                 .arg(format!(
@@ -109,7 +113,7 @@ fn main() {
                 println!("Error: {:#?}", String::from_utf8_lossy(&output.stderr));
             }
 
-            commits_made+= 1;
+            commits_made += 1;
         }
 
         current_date = current_date.succ_opt().unwrap();
